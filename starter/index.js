@@ -86,8 +86,24 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
-printResults("months", "total", "average", "increase", "decrease");
 
+//variables that will be fed into after each function is called.
+let totalMonths = 0;
+let totalMoney = 0;
+let averageChange = 0;
+let greatestIncrease = 0;
+let greatestDecrease = 0;
+
+calculateMonths();
+printResults(totalMonths, "total", "average", "increase", "decrease");
+
+//sets totalMonths to the length of the finances var. Which is the total number of months.
+function calculateMonths()
+{
+  totalMonths = finances.length;
+}
+
+//function to print all the results defined prior
 function printResults(months, total, average, increase, decrease)
 {
   console.log(`Financial Analysis \n
