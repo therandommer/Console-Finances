@@ -93,18 +93,21 @@ let totalMoney = 0;
 let averageChange = 0;
 let greatestIncrease = 0;
 let greatestDecrease = 0;
+let changes = [];
 
+//function calls to dictate the logic of the program.
 calculateMonths();
 calculateTotal();
-printResults(totalMonths, totalMoney, "average", "increase", "decrease");
+calculateAverage();
+printResults(totalMonths, totalMoney, averageChange, "increase", "decrease");
 
-//sets totalMonths to the length of the finances var. Which is the total number of months.
+//sets totalMonths to the length of the finances var.
 function calculateMonths()
 {
   totalMonths = finances.length;
 }
 
-//sets totalMoney
+//Calculates total money through adding the value of each number in the finances array.
 function calculateTotal()
 {
   let total = 0;
@@ -112,16 +115,30 @@ function calculateTotal()
   {
     total += finances[i].find(Number);
   }
-  totalMoney = (`$${total}`);
+  totalMoney = (`${total}`);
 }
+
+//Calculates average changes throughout the finances variable.
+function calculateAverage()
+{
+  let totalChanges = 0;
+  //compares current number vs prior number to work out the changes. Adds the change to a total change value for future calculations
+  for (let i = 1; i < finances.length; i++)
+  {
+    changes.push(finances[i].find(Number) - finances[i-1].find(Number));
+    totalChanges += changes[i-1];
+  }
+  averageChange = (totalChanges / changes.length).toFixed(2); //sets number to display only 2dp
+}
+
 //function to print all the results defined prior
 function printResults(months, total, average, increase, decrease)
 {
   console.log(`Financial Analysis \n
   ----------------\n
   Total Months: ${months}\n
-  Total: ${total}\n
-  Average Change: ${average}\n
-  Greatest Increase in Profits/Losses: ${increase}\n
-  Greatest Decrease in Profits/Losses: ${decrease}`);
+  Total: $${total}\n
+  Average Change: $${average}\n
+  Greatest Increase in Profits/Losses: $${increase}\n
+  Greatest Decrease in Profits/Losses: $${decrease}`);
 }
