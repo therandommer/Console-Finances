@@ -95,7 +95,8 @@ let greatestIncrease = 0;
 let greatestDecrease = 0;
 
 calculateMonths();
-printResults(totalMonths, "total", "average", "increase", "decrease");
+calculateTotal();
+printResults(totalMonths, totalMoney, "average", "increase", "decrease");
 
 //sets totalMonths to the length of the finances var. Which is the total number of months.
 function calculateMonths()
@@ -103,6 +104,16 @@ function calculateMonths()
   totalMonths = finances.length;
 }
 
+//sets totalMoney
+function calculateTotal()
+{
+  let total = 0;
+  for(let i = 0; i < finances.length; i++)
+  {
+    total += finances[i].find(Number);
+  }
+  totalMoney = (`$${total}`);
+}
 //function to print all the results defined prior
 function printResults(months, total, average, increase, decrease)
 {
