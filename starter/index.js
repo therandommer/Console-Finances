@@ -86,3 +86,15 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+printResults("months", "total", "average", "increase", "decrease");
+
+function printResults(months, total, average, increase, decrease)
+{
+  console.log(`Financial Analysis \n
+  ----------------\n
+  Total Months: ${months}\n
+  Total: ${total}\n
+  Average Change: ${average}\n
+  Greatest Increase in Profits/Losses: ${increase}\n
+  Greatest Decrease in Profits/Losses: ${decrease}`);
+}
