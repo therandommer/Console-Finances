@@ -199,6 +199,5 @@ calculateTotal();
 calculateAverage();
 calculateGreatestChange();
 calculateSmallestChange();
-console.log(greatestIncrease);
 printResults(totalMonths, totalMoney, averageChange, greatestIncrease, greatestDecrease);
 
